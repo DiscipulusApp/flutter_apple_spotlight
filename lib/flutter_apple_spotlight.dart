@@ -34,7 +34,7 @@ class CoreSpotlight {
   /// specific domain / identifier.
   Future<void> deleteAll({
     bool identifierIsDomain = false,
-    List<String>? identifier,
+    Iterable<String>? identifier,
   }) async {
     await _channel.invokeMethod("delete_searchable_items", {
       "identifierIsDomain": identifierIsDomain,
@@ -42,7 +42,7 @@ class CoreSpotlight {
     });
   }
 
-  Future<void> indexSearchableItems(List<CoreSpotlightItem> items) async {
+  Future<void> indexSearchableItems(Iterable<CoreSpotlightItem> items) async {
     return await _channel.invokeMethod(
         'index_searchable_items', items.map((e) => e.toMap()).toList());
   }
